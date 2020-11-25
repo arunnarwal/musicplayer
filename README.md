@@ -1,2 +1,2 @@
-# musicplayer
+# Reactplayer
 Created with CodeSandbox
