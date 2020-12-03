@@ -2,11 +2,25 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: black;
+  font-family: "Lato", sans-serif;
 }
 h1,
-h2,
-h3 {
+h3,
+h4 {
+  font-weight: 400;
   color: rgb(54, 54, 54);
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 20px;
 }
 /* songs css section */
 .song-container {
@@ -42,7 +56,7 @@ h3 {
 }
 .time-control input {
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 1rem 0rem;
 }
 .time-control p {
   padding: 1rem;
@@ -56,4 +70,40 @@ h3 {
 }
 svg {
   cursor: pointer;
+}
+
+/* //library */
+.library {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20rem;
+  height: 100%;
+  background-color: lightcyan;
+  box-shadow: 2px 2px 50px gray;
+  overflow: scroll;
+}
+.library h2 {
+  padding: 2rem;
+}
+.library-song {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem 1rem 2rem;
+  cursor: pointer;
+}
+.library-song:hover {
+  background-color: red;
+}
+.library-song img {
+  width: 30%;
+}
+.song-description {
+  padding: 1rem;
+}
+.song-description h3 {
+  font-size: 1rem;
+}
+.song-description h4 {
+  font-size: 0.7rem;
 }
