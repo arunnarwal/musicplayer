@@ -6,8 +6,14 @@ import {
   faAngleRight,
   faPause
 } from "@fortawesome/free-solid-svg-icons";
-const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
-  const audioRef = useRef(null);
+const Player = ({
+  currentSong,
+  isPlaying,
+  setIsPlaying,
+  audioRef,
+  setsongInfo,
+  songInfo
+}) => {
   const playsongHndler = () => {
     if (isPlaying) {
       audioRef.current.pause();
@@ -17,11 +23,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
       setIsPlaying(!isPlaying);
     }
   };
-  const timeUpdateHandler = (e) => {
-    const current = e.target.currentTime;
-    const duration = e.target.duration;
-    setsongInfo({ ...songInfo, currentTime: current, duration: duration });
-  };
+
   const getTime = (time) => {
     return (
       Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
@@ -31,10 +33,6 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
     audioRef.current.currentTime = e.target.value;
     setsongInfo({ ...songInfo, currentTime: e.target.value });
   };
-  const [songInfo, setsongInfo] = useState({
-    currentTime: 0,
-    duration: 0
-  });
 
   return (
     <>
@@ -61,12 +59,6 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
           />
           <FontAwesomeIcon className="play" size="2x" icon={faAngleRight} />
         </div>
-        <audio
-          onTimeUpdate={timeUpdateHandler}
-          onLoadedMetadata={timeUpdateHandler}
-          ref={audioRef}
-          src={currentSong.audio}
-        ></audio>
       </div>
     </>
   );
